@@ -8,7 +8,7 @@ You can use gimp instead of feh.
 feh test.ppm
 ```
 It look like this:<br>
-![initial](https://github.com/furkanonder/RayTracing/blob/master/outputs/initial.png)
+![blueGradient](https://github.com/furkanonder/RayTracing/blob/master/outputs/blueGradient.png)
 
 ## Reference
 * Peter Shirley - Ray Tracing in One Weekend(E-book)
