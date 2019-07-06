@@ -30,11 +30,11 @@ while(j >= 0):
         v2 = lowerLeft.add(v1)
         direction = v1.add(v2)
 
-        r = Ray(origin, direction)
-        rgb = r.color()
-           
+        rgb = Ray(origin, direction).color()
+                
         ir = int(const*rgb.X)
         ig = int(const*rgb.Y)
         ib = int(const*rgb.Z)
-        print(ir, ig, ib)
+        print(ir, ig, ib)  
+           
     j-=1
