@@ -22,15 +22,13 @@ while(j >= 0):
     for i in range(nx):
         u = float(i / nx)
         v = float(j / ny)
-    
+        
         hor = horizontal.multiplyScalar(u)
-        vert = vertical.multiplyScalar(v)
+        ver = vertical.multiplyScalar(v)
+        direction = hor + ver + lowerLeft
 
-        v1 = hor + vert
-        v2 = lowerLeft + v1
-        direction = v1 + v2
-
-        rgb = Ray(origin,direction).color()
+        r = Ray(origin,direction)
+        rgb = r.color()
                 
         ir = int(const*rgb.x)
         ig = int(const*rgb.y)

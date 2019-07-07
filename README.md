@@ -8,7 +8,7 @@ You can use gimp instead of feh.
 feh out.ppm
 ```
 It look like this:<br>
-![bottomLeftSphere](https://github.com/furkanonder/RayTracing/blob/master/outputs/bottomLeftSphere.png)
+![centeredSphere](https://github.com/furkanonder/RayTracing/blob/master/outputs/centeredSphere.png)
 
 ## Reference
 * Peter Shirley - Ray Tracing in One Weekend(E-book)
