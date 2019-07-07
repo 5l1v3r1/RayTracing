@@ -16,25 +16,26 @@ horizontal = Vector(4.0, 0.0, 0.0)
 vertical = Vector(0.0, 2.0, 0.0)
 origin = Vector(0.0, 0.0, 0.0)
 
-j = ny-1
+j = ny - 1
 
 while(j >= 0):
     for i in range(nx):
-        u = float(i/nx)
-        v = float(j/ny)
+        u = float(i / nx)
+        v = float(j / ny)
     
         hor = horizontal.multiplyScalar(u)
         vert = vertical.multiplyScalar(v)
 
-        v1 = hor.add(vert)
-        v2 = lowerLeft.add(v1)
-        direction = v1.add(v2)
+        v1 = hor + vert
+        v2 = lowerLeft + v1
+        direction = v1 + v2
 
-        rgb = Ray(origin, direction).color()
+        rgb = Ray(origin,direction).color()
                 
-        ir = int(const*rgb.X)
-        ig = int(const*rgb.Y)
-        ib = int(const*rgb.Z)
+        ir = int(const*rgb.x)
+        ig = int(const*rgb.y)
+        ib = int(const*rgb.z)
+
         print(ir, ig, ib)  
            
     j-=1
