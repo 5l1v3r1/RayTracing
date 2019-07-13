@@ -7,29 +7,31 @@ class Vector:
         self.x = x
         self.y = y
         self.z = z
+      
+    def __mul__(self,other):
+        return __class__(self.x * other.x, self.y * other.y, self.z * other.z)
 
+    def __add__(self,other):
+        return __class__(self.x + other.x, self.y + other.y,self.z + other.z)
 
-    def length(self):
-        return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)      
-
-    def multiplyScalar(self,t):
-        return Vector(self.x * t, self.y * t, self.z * t)
-
-    def __mul__(self,t):
-        return Vector(self.x * t.x, self.y * t.y, self.z * t.z)
-
-    def __add__(self,o):
-        return __class__(self.x + o.x, self.y + o.y,self.z + o.z)
+    def __sub__(self,other):
+        return __class__(self.x - other.x, self.y - other.y, self.z - other.z)
 
     def subtractScalar(self,t):
-        return Vector(self.x - t, self.y - t, self.z - t)
+        return __class__(self.x - t, self.y - t, self.z - t)     
 
-    def __sub__(self,o):
-        return __class__(self.x - o.x, self.y - o.y, self.z - o.z)
-    
-    def dot(self,o):
-        return self.x * o.x + self.y * o.y + self.z * o.z
+    def multiplyScalar(self,t):
+        return __class__(self.x * t, self.y * t, self.z * t)
+
+    def divideScalar(self,t):
+        return __class__(self.x / t, self.y / t, self.z / t)
 
     def normalize(self):
         l = self.length()
-        return Vector(self.x / l, self.y / l, self.z / l)
+        return __class__(self.x / l, self.y / l, self.z / l)
+
+    def length(self):
+        return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
+
+    def dot(self,other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
