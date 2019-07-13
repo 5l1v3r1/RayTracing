@@ -1,3 +1,5 @@
+from hitableList import HitableList
+from sphere import Sphere
 from vector import Vector
 from ray import Ray
 
@@ -6,8 +8,7 @@ ny = 100
 const = 255.99
 
 #Image header
-#P3 defines the image format.
-#255 is maximum color value.
+#P3 defines the image format.255 is maximum color value.
 #nx pixel by ny pixel image
 print(f"P3\n{nx} {ny}\n255")
 
@@ -16,8 +17,12 @@ horizontal = Vector(4.0, 0.0, 0.0)
 vertical = Vector(0.0, 2.0, 0.0)
 origin = Vector(0.0, 0.0, 0.0)
 
-j = ny - 1
+world = HitableList([
+    Sphere(Vector(0, 0, -1), 0.5),
+    Sphere(Vector(0, -100.5, -1), 100)
+])
 
+j = ny - 1
 while(j >= 0):
     for i in range(nx):
         u = float(i / nx)
@@ -28,7 +33,7 @@ while(j >= 0):
         direction = hor + ver + lowerLeft
 
         r = Ray(origin,direction)
-        rgb = r.color()
+        rgb = r.color(world)
                 
         ir = int(const*rgb.x)
         ig = int(const*rgb.y)

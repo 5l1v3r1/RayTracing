@@ -1,6 +1,8 @@
-from vector import Vector
 import math
+import sys
 
+from hitRecord import HitRecord
+from vector import Vector
 
 class Ray:
     
@@ -50,12 +52,12 @@ class Ray:
             return (-b - math.sqrt(discriminant)) / (2*a)     
     
 
-    def color(self):
-        t = self.hit_sphere(Vector(0.0, 0.0, -1.0), 0.5, self)
+    def color(self,world):
+        hitInfo = world.hit(self, 0, sys.float_info.max)
 
-        if t > 0.0:
-            n = (self.pointAtParameter(t) - Vector(0.0, 0.0, -1.0)).normalize()
-            return (n + Vector(1, 1, 1)).multiplyScalar(0.5)
+        if hitInfo:
+            return (hitInfo.normal + Vector(1, 1, 1)).multiplyScalar(0.5)
+
 
         unitDirection = self.direction.normalize()
         t = 0.5 * (unitDirection.y + 1.0)
