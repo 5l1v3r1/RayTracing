@@ -1,3 +1,4 @@
+from random import random
 import math
 import sys
 
@@ -52,12 +53,21 @@ class Ray:
             return (-b - math.sqrt(discriminant)) / (2*a)     
     
 
+    def randomInUnitSphere(self):
+        while True:
+            p = Vector(random(), random(), random())
+            p = p.multiplyScalar(2.0) - Vector(1.0, 1.0, 1.0)
+            if p.dot(p) < 1.0:
+                return p
+
+
     def color(self,world):
         hitInfo = world.hit(self, 0, sys.float_info.max)
 
-        if hitInfo:
-            return (hitInfo.normal + Vector(1, 1, 1)).multiplyScalar(0.5)
-
+        if hitInfo is not None:
+            target = hitInfo.p + hitInfo.normal + self.randomInUnitSphere()
+            r = Ray(hitInfo.p, target - hitInfo.p)
+            return r.color(world).multiplyScalar(0.5)
 
         unitDirection = self.direction.normalize()
         t = 0.5 * (unitDirection.y + 1.0)

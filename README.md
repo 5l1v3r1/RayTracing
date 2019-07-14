@@ -8,7 +8,7 @@ You can use gimp instead of feh.
 feh out.ppm
 ```
 It look like this:<br>
-![;anti-aliasing](https://github.com/furkanonder/RayTracing/blob/master/outputs/anti-aliasing.png)
+![diffuse](https://github.com/furkanonder/RayTracing/blob/master/outputs/diffuse.png)
 
 ## Reference
 * Peter Shirley - Ray Tracing in One Weekend(E-book)
