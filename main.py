@@ -1,10 +1,11 @@
+from random import random
+import math
+
 from hitableList import HitableList
 from sphere import Sphere
 from vector import Vector
 from camera import Camera
 from ray import Ray
-
-import random
 
 nx = 200
 ny = 100
@@ -33,16 +34,16 @@ while(j >= 0):
     for i in range(nx):
         col = Vector(0.0, 0.0,0.0)
         for s in range(ns):
-            u = float((i + random.uniform(0, 1)) / nx)
-            v = float((j + random.uniform(0,1)) / ny)
+            u = float((i + random()) / nx)
+            v = float((j + random()) / ny)
             r = cam.getRay(u,v)
             p = r.pointAtParameter(2.0)
             col = col + r.color(world)
         
         col = col.divideScalar(float(ns))               
-        ir = int(const*col.x)
-        ig = int(const*col.y)
-        ib = int(const*col.z)
+        ir = int(const*(math.sqrt(col.x)))
+        ig = int(const*(math.sqrt(col.y)))
+        ib = int(const*(math.sqrt(col.z)))
 
         print(ir, ig, ib)  
            
