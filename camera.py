@@ -1,5 +1,5 @@
-from vector import Vector
 from ray import Ray
+from vector import Vector
 
 
 class Camera:
@@ -8,8 +8,8 @@ class Camera:
         self.horizontal = Vector(4.0, 0.0, 0.0)
         self.vertical = Vector(0.0, 2.0, 0.0)
         self.origin = Vector(0.0, 0.0, 0.0)
-    
-    def getRay(self,u,v):
-        direction = self.lowerLeftCorner + self.horizontal.multiplyScalar(u) 
-        direction = direction + self.vertical.multiplyScalar(v) - self.origin
+
+    def getRay(self, u, v):
+        direction = self.lowerLeftCorner + self.horizontal.multiply_scalar(u)
+        direction = direction + self.vertical.multiply_scalar(v) - self.origin
         return Ray(self.origin, direction)

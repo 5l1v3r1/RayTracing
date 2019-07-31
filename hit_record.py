@@ -1,6 +1,5 @@
-
 class HitRecord:
-    def __init__(self, t = None, p = None, normal = None):
+    def __init__(self, t=None, p=None, normal=None):
         """
         :type t: float
         :type p: Vector
