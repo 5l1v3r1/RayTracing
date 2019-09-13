@@ -50,13 +50,14 @@ class Ray:
         else:
             return (-b - math.sqrt(discriminant)) / (2 * a)
 
-    def random_in_unit_sphere(self):
+    @staticmethod
+    def random_in_unit_sphere():
         while True:
             p = Vector(random(), random(), random())
             p = p.multiply_scalar(2.0) - Vector(1.0, 1.0, 1.0)
             if p.dot(p) < 1.0:
-                return p
-
+                yield p
+                
     def color(self, world):
         hitInfo = world.hit(self, 0, sys.float_info.max)
 
