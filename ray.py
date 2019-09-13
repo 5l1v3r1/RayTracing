@@ -56,7 +56,7 @@ class Ray:
             p = Vector(random(), random(), random())
             p = p.multiply_scalar(2.0) - Vector(1.0, 1.0, 1.0)
             if p.dot(p) < 1.0:
-                yield p
+                return p
                 
     def color(self, world):
         hitInfo = world.hit(self, 0, sys.float_info.max)
